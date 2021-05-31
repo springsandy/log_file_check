@@ -23,3 +23,4 @@ def main():
     logger.critical('my CRITICAL log')
 
 main()
+file_r()
