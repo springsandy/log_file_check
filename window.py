@@ -13,6 +13,8 @@ class MyApp(QMainWindow):
         btn.resize(btn.sizeHint())
         btn.clicked.connect(QCoreApplication.instance().quit)
 
+        self.statusBar().showMessage('Ready')
+
         self.setWindowTitle('log 확인하기')
         self.move(300, 300)
         self.resize(400, 200)
