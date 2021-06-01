@@ -8,7 +8,8 @@ def main():
     formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(filename)s, %(lineno)s, %(message)s')
 
     streamHandler = logging.StreamHandler()
-    os.remove('./a.log')
+    if os.path.isfile('./a.log'):
+        os.remove('./a.log')
     fileHandler = logging.FileHandler('./a.log')
 
     streamHandler.setFormatter(formatter)
