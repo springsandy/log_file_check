@@ -1,8 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow
 from PyQt5.QtCore import QCoreApplication
 
-class MyApp(QWidget):
+class MyApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -13,7 +13,7 @@ class MyApp(QWidget):
         btn.resize(btn.sizeHint())
         btn.clicked.connect(QCoreApplication.instance().quit)
 
-        self.setWindowTitle("log 확인하기")
+        self.setWindowTitle('log 확인하기')
         self.move(300, 300)
         self.resize(400, 200)
         self.show()
