@@ -1,6 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow
-from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, qApp
 
 class MyApp(QMainWindow):
     def __init__(self):
@@ -8,12 +7,17 @@ class MyApp(QMainWindow):
         self.initUI()
 
     def initUI(self):
-        btn = QPushButton('닫기', self)
-        btn.move(150, 150)
-        btn.resize(btn.sizeHint())
-        btn.clicked.connect(QCoreApplication.instance().quit)
+        exitAction = QAction('Exit', self)
+        exitAction.setShortcut('Ctrl+Q')
+        exitAction.setStatusTip('Exit application')
+        exitAction.triggered.connect(qApp.quit)
 
-        self.statusBar().showMessage('Ready')
+        self.statusBar()
+
+        menubar = self.menuBar()
+        menubar.setNativeMenuBar(False)
+        filemenu = menubar.addMenu('&File')
+        filemenu.addAction(exitAction)
 
         self.setWindowTitle('log 확인하기')
         self.move(300, 300)
