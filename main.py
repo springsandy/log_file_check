@@ -4,7 +4,7 @@ from file import file_r
 def main():
     logger = logging.getLogger(__name__)
 
-    formatter = logging.Formatter('%(asctime)s %(levelname)s %(filename)s:%(lineno)s %(message)s')
+    formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(filename)s, %(lineno)s, %(message)s')
 
     streamHandler = logging.StreamHandler()
     fileHandler = logging.FileHandler('./a.log')
