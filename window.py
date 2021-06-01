@@ -1,6 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QCheckBox
-from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QApplication, QWidget, QComboBox, QLabel
 
 class MyApp(QWidget):
     def __init__(self):
@@ -8,20 +7,25 @@ class MyApp(QWidget):
         self.initUI()
 
     def initUI(self):
-        cb = QCheckBox('Show title', self)
-        cb.move(20, 20)
-        cb.toggle()
-        cb.stateChanged.connect(self.changeTitle)
+        self.lbl = QLabel('Option1', self)
+        self.lbl.move(50, 150)
+
+        cb = QComboBox(self)
+        cb.addItem('Option1')
+        cb.addItem('Option2')
+        cb.addItem('Option3')
+        cb.addItem('Option4')
+        cb.move(50, 50)
+
+        cb.activated[str].connect(self.onActivated)
 
         self.setWindowTitle('log 확인하기')
         self.setGeometry(300, 300, 300, 200)
         self.show()
 
-    def changeTitle(self, state):
-        if state == Qt.Checked:
-            self.setWindowTitle('QCheckBox')
-        else:
-            self.setWindowTitle('')
+    def onActivated(self, text):
+        self.lbl.setText(text)
+        self.lbl.adjustSize()
 
 if __name__=='__main__':
     app = QApplication(sys.argv)
