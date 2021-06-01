@@ -1,5 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QCheckBox
+from PyQt5.QtCore import Qt
 
 class MyApp(QWidget):
     def __init__(self):
@@ -7,23 +8,20 @@ class MyApp(QWidget):
         self.initUI()
 
     def initUI(self):
-        btn1 = QPushButton('&Button1', self)
-        btn1.setCheckable(True)
-        btn1.toggle()
-        btn2 = QPushButton(self)
-        btn2.setText('Button&2')
-        btn3 = QPushButton('Button3', self)
-        btn3.setEnabled(False)
+        cb = QCheckBox('Show title', self)
+        cb.move(20, 20)
+        cb.toggle()
+        cb.stateChanged.connect(self.changeTitle)
 
-        vbox = QVBoxLayout()
-        vbox.addWidget(btn1)
-        vbox.addWidget(btn2)
-        vbox.addWidget(btn3)
-
-        self.setLayout(vbox)
         self.setWindowTitle('log 확인하기')
         self.setGeometry(300, 300, 300, 200)
         self.show()
+
+    def changeTitle(self, state):
+        if state == Qt.Checked:
+            self.setWindowTitle('QCheckBox')
+        else:
+            self.setWindowTitle('')
 
 if __name__=='__main__':
     app = QApplication(sys.argv)
