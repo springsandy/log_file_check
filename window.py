@@ -1,24 +1,28 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout
 
-class MyApp(QMainWindow):
+class MyApp(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
 
     def initUI(self):
-        label1 = QLabel('Label1', self)
-        label1.move(20, 20)
-        label2 = QLabel('Label2', self)
-        label2.move(20, 60)
+        btn1 = QPushButton('&Button1', self)
+        btn1.setCheckable(True)
+        btn1.toggle()
+        btn2 = QPushButton(self)
+        btn2.setText('Button&2')
+        btn3 = QPushButton('Button3', self)
+        btn3.setEnabled(False)
 
-        btn1 = QPushButton('Button1', self)
-        btn1.move(80, 13)
-        btn2 = QPushButton('Button2', self)
-        btn2.move(80, 53)
+        vbox = QVBoxLayout()
+        vbox.addWidget(btn1)
+        vbox.addWidget(btn2)
+        vbox.addWidget(btn3)
 
+        self.setLayout(vbox)
         self.setWindowTitle('log 확인하기')
-        self.setGeometry(300, 300, 400, 200)
+        self.setGeometry(300, 300, 300, 200)
         self.show()
 
 if __name__=='__main__':
