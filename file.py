@@ -4,8 +4,9 @@ def file_r():
 
     line = f.readline()
     while line:
+        line = line.rstrip('\n')
         line_data = line.split(', ')
-        print("%d %s %s %s %s %s" %(line_num, line_data[0], line_data[1], line_data[2], line_data[3], line_data[4]), end='')
+        print("%d %s %s %s %s %s\n" %(line_num, line_data[0], line_data[1], line_data[2], line_data[3], line_data[4]), end='')
         line = f.readline()
         line_num += 1
 
