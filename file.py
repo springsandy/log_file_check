@@ -12,7 +12,7 @@ def file_r():
         line = f.readline()
         line_num += 1
 
-    print("총 수정해야될 부분의 개수", line_num ,"입니다.")
+    print("총 수정해야될 부분의 개수", line_num-1 ,"입니다.")
     print(log_data)
 
     f.close()
