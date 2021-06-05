@@ -1,6 +1,6 @@
 import logging
 import os
-from file import file_r
+from choice import choice
 
 def main():
     logger = logging.getLogger(__name__)
@@ -23,4 +23,4 @@ def main():
     logger.critical('my CRITICAL log')
 
 main()
-file_r()
+choice()
